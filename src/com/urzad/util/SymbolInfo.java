@@ -5,4 +5,6 @@ public class SymbolInfo {
 	public String ka_km;
 	public String ka_ki;
 	public String comments;
+	
+	final static public int NUMBER_OF_COLUMNS = 5;
 }

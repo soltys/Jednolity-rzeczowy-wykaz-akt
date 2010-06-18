@@ -8,7 +8,7 @@ public class UtilsTest {
 	{
 		//line 6
 		String line = "0;00;002;0020;;Wybory do Sejmu i Senatu RP;B-5;Bc;Postępowanie z dokumentacją wyborczą regulują  odrębne przepisy";
-		SymbolInfo test = SymbolParser.parseLineToSymbolInfo(line);
+		SymbolInfo test = SymbolUtils.parseLineToSymbolInfo(line);
 		
 		Assert.assertNotNull(test);
 		//Columns section
@@ -23,5 +23,18 @@ public class UtilsTest {
 		Assert.assertEquals("B-5", test.ka_km);
 		Assert.assertEquals("Bc", test.ka_ki);
 		Assert.assertEquals("Postępowanie z dokumentacją wyborczą regulują  odrębne przepisy", test.comments);	
+	}
+	
+	@Test public void DeepthTest()
+	{
+		SymbolInfo symbolInfo  = new SymbolInfo();
+		
+		symbolInfo.columns[0] = "0";
+		symbolInfo.columns[1] = "";
+		Assert.assertEquals(0, SymbolUtils.computeDeepth(symbolInfo));
+		symbolInfo.columns[0] = "1";
+		symbolInfo.columns[1] = "2";
+		symbolInfo.columns[2] = "";
+		Assert.assertEquals(1, SymbolUtils.computeDeepth(symbolInfo));
 	}
 }

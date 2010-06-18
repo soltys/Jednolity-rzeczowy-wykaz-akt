@@ -1,5 +1,5 @@
 package com.urzad.util;
-public class SymbolParser {
+public class SymbolUtils {
 	public static SymbolInfo parseLineToSymbolInfo(String line){		
 		String[] data = line.split(";");
 		SymbolInfo symbolInfo = new SymbolInfo();
@@ -16,5 +16,16 @@ public class SymbolParser {
 		symbolInfo.comments = data[8];
 		
 		return symbolInfo;
+	}
+	
+	public static int computeDeepth(SymbolInfo parrent)
+	{
+		int i = 0;
+		do{
+			if(parrent.columns[i] == "")
+				break;
+			++i;
+		}while(i < SymbolInfo.NUMBER_OF_COLUMNS);
+		return --i;
 	}
 }
