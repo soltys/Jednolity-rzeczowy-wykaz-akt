@@ -3,6 +3,4 @@
 *.jar
 *.war
 
-.classpath
-.project
 .settings/*
