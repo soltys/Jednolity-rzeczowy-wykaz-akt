@@ -17,7 +17,29 @@ public class SymbolUtils {
 		
 		return symbolInfo;
 	}
-	
+	public static boolean isChildren(SymbolInfo parrent, SymbolInfo children)
+	{
+		boolean isChildren = false;
+		int parrentDeepth = computeDeepth(parrent);
+		int childrenDeepth = computeDeepth(children);
+		
+		if(parrentDeepth - 1 == childrenDeepth && isSameToDeepth(parrent,children,parrentDeepth))
+			isChildren = true;
+		
+		return isChildren;
+	}
+	private static boolean isSameToDeepth(SymbolInfo parrent,
+			SymbolInfo children, int deepth) {
+		boolean isSame = false;
+		for(int i = 0; i < deepth ; ++i)
+		{
+			if(parrent.columns[i] == children.columns[i])
+				isSame = true;
+			else
+				isSame = false;
+		}
+		return isSame;
+	}
 	public static int computeDeepth(SymbolInfo parrent)
 	{
 		int i = 0;
