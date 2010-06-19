@@ -1,7 +1,14 @@
 package com.urzad.tests;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.List;
+
 import org.junit.Assert;
 import org.junit.Test;
-import com.urzad.util.*;
+
+import com.urzad.util.SymbolInfo;
+import com.urzad.util.SymbolReader;
+import com.urzad.util.SymbolUtils;
 
 public class UtilsTest {
 	@Test public void ParserLineTest()
@@ -25,16 +32,30 @@ public class UtilsTest {
 		Assert.assertEquals("Postępowanie z dokumentacją wyborczą regulują  odrębne przepisy", test.comments);	
 	}
 	
-	@Test public void DeepthTest()
+
+	
+	@Test public void isChildTest()
 	{
-		SymbolInfo symbolInfo  = new SymbolInfo();
+		SymbolInfo parrent  = SymbolUtils.parseLineToSymbolInfo("0;00;003;;;Referenda;;;");
+		SymbolInfo children = SymbolUtils.parseLineToSymbolInfo("0;00;003;0030;;Referendum ogólnokrajowe;B-5;Bc;Postępowanie z dokumentacją  referendum regulują odrębne przepisy");
 		
-		symbolInfo.columns[0] = "0";
-		symbolInfo.columns[1] = "";
-		Assert.assertEquals(0, SymbolUtils.computeDeepth(symbolInfo));
-		symbolInfo.columns[0] = "1";
-		symbolInfo.columns[1] = "2";
-		symbolInfo.columns[2] = "";
-		Assert.assertEquals(1, SymbolUtils.computeDeepth(symbolInfo));
+		Assert.assertTrue(SymbolUtils.isChild(parrent, children));		
+	}
+	
+	@Test public void isNotChildrTest()
+	{
+		SymbolInfo parrent  = SymbolUtils.parseLineToSymbolInfo("0;00;005;;;Działalność organów gminy;;;");
+		SymbolInfo children = SymbolUtils.parseLineToSymbolInfo("0;00;006;0062;;Programy działania komisji i zespołów;A;Bc;");
+		
+		Assert.assertFalse(SymbolUtils.isChild(parrent, children));		
+	}
+	
+	//TODO It need a better name
+	@Test public void isNotChildrTest2()
+	{
+		SymbolInfo parrent  = SymbolUtils.parseLineToSymbolInfo("0;00;;;;PRZEPISY PRAWNE DOTYCZĄCE ORGANÓW JEDNOOSOBOWYCH I KOLEGIALNYCH;B-10;Bc;");
+		SymbolInfo children = SymbolUtils.parseLineToSymbolInfo("0;00;002;0026;;Interwencje, wnioski i postulaty senatorów;B-5;Bc;");
+		
+		Assert.assertFalse(SymbolUtils.isChild(parrent, children));		
 	}
 }
