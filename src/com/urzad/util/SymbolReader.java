@@ -14,7 +14,25 @@ public class SymbolReader {
 
 	public List<SymbolInfo> getTopLevel() throws IOException,FileNotFoundException
 	{
-		return null;
+		String line = "";
+		List<SymbolInfo> topLevelList = new ArrayList<SymbolInfo>();
+		FileReader fr = null;
+		BufferedReader br = null;
+	
+		fr = new FileReader(filename);
+		br = new BufferedReader(fr);
+		while((line = br.readLine()) != null)
+		{
+			SymbolInfo topLevel = SymbolUtils.parseLineToSymbolInfo(line);						
+			if(topLevel.columns[1].isEmpty())
+			{
+				topLevelList.add(topLevel);
+			}
+		}
+		br.close();
+		fr.close();
+	
+		return topLevelList;
 	}
 	public List<SymbolInfo> findChildrens(SymbolInfo parrent) throws IOException,FileNotFoundException
 	{	
