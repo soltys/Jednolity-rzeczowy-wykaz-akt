@@ -25,6 +25,6 @@
   </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>StaticServlet</servlet-name>
-  	<url-pattern>/*</url-pattern>
+  	<url-pattern>/static/*</url-pattern>
   </servlet-mapping>
 </web-app>
