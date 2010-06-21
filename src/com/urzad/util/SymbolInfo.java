@@ -37,14 +37,18 @@ public class SymbolInfo {
 	private String columnsToJSON()
 	{
 		String output = "\"columns\": [";
-		int i = 0;
 		for(String str: columns)
 		{
-			output = output + String.format("{\"%s\": \"%s\"},",Integer.toString(i),str);
-			i++;			
+			output = output + String.format("{\"%s\": \"%s\"},","id",str);					
 		}
-		output = output.substring(0, output.length() - 1 );
+	
+		output = removeLastCollon(output);
 		output = output + "]";
+		return output;
+	}
+
+	private static String removeLastCollon(String output) {
+		output = output.substring(0, output.length() - 1 );
 		return output;
 	}
 	
@@ -55,7 +59,7 @@ public class SymbolInfo {
 		{
 			output = output + si.toJSON() + ",";
 		}
-		output = output.substring(0, output.length() - 1 );
+		output = removeLastCollon(output);
 		output = output + "]}";
 		return output;
 	
