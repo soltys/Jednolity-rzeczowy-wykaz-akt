@@ -25,6 +25,7 @@ public class SymbolUtils {
 		
 		return symbolInfo;
 	}
+	
 	public static boolean isChild(SymbolInfo parent, SymbolInfo children)
 	{
 		boolean isChildren = false;

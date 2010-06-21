@@ -1,13 +1,8 @@
 package com.urzad.tests;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.List;
-
 import org.junit.Assert;
 import org.junit.Test;
 
 import com.urzad.util.SymbolInfo;
-import com.urzad.util.SymbolReader;
 import com.urzad.util.SymbolUtils;
 
 public class UtilsTest {
@@ -31,7 +26,6 @@ public class UtilsTest {
 		Assert.assertEquals("Bc", test.ka_ki);
 		Assert.assertEquals("Postępowanie z dokumentacją wyborczą regulują  odrębne przepisy", test.comments);	
 	}
-	
 
 	
 	@Test public void isChildTest()
