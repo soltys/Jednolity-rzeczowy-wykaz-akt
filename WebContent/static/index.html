@@ -3,8 +3,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Awesome!</title>
+<script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="startup.js"></script>
 </head>
 <body>
-	<p>Welcome, lets play</p>
+	
+	<ul id="mainList"></ul>
+	<a href="symbol.html">go there and die!</a>
 </body>
+<script type="text/javascript">
+$(document).ready(function() {
+	var list = new SymbolList($("#mainList"));
+	list.startup();
+});
+</script>
 </html>
