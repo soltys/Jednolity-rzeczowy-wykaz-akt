@@ -15,7 +15,7 @@
 	<div id="mainList"></div>
 	
 	<form id="searchForm">
-	<input type="text"  id="searchLine" />
+	<input type="text"  id="searchLine" /><div id="searchError"></div>
 	<br/><input type="submit" name="Szukaj" value="Szukaj" id="btnSearch" />
 	<button id="btnClear">Czyść</button>
 	</form>
@@ -55,13 +55,14 @@ $(document).ready(function() {
 
 	$("#btnClear").click(function() {
 		  $("#searchResults").slideUp("slow");
+		  $("#searchResults").children().remove();
 		return false;	 
 	});
 	
 	$("#searchForm").submit(function() {
-		  $("#searchResults").slideUp("slow");
+	
 		  doSearching( $("#searchLine").val() );
-		  $("#searchResults").slideDown("slow");
+		  
 		  return false;
 	});
 	

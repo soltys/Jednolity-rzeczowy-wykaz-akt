@@ -86,8 +86,15 @@ function doSearching(searchLine)
 {
 	$.ajax({
 		  url: "../api/Search",		    
-		  success: function(data){			
-			insertSearchResults(data);			
+		  success: function(data){
+		  	$("#searchResults").slideUp("slow");
+			insertSearchResults(data);
+			$("#searchResults").slideDown("slow");
+		},
+		error: function(XMLHttpRequest, textStatus, errorThrown) {
+			$("#searchError").show("fast");
+			$("#searchError").text("Nic nie znaleziono");
+			$("#searchError").fadeOut(5000);
 		},
 		  data: "searchLine=" + searchLine,
 		  type: "GET",
@@ -99,6 +106,7 @@ function insertSearchResults(data) {
 	$("#searchResults").children().remove();
 	
 	$.each(data.list, function(i,item){
+		
 		var itemToAdd = $("<li>").text("(" + frontNumber(item) + ") " + item.name);
 		itemToAdd.addClass(frontNumber(item));
 		$("#searchResults").append(itemToAdd);
