@@ -26,13 +26,13 @@ public class SymbolUtils {
 		return symbolInfo;
 	}
 	
-	public static boolean isChild(SymbolInfo parent, SymbolInfo children)
+	public static boolean isChild(SymbolInfo parent, SymbolInfo child)
 	{
 		boolean isChildren = false;
 		int parentDeepth = computeDeepth(parent);
-		int childrenDeepth = computeDeepth(children);
+		int childrenDeepth = computeDeepth(child);
 		
-		if(parentDeepth + 1 == childrenDeepth && isSameToDeepth(parent,children,parentDeepth))
+		if(parentDeepth + 1 == childrenDeepth && isSameToDeepth(parent,child,parentDeepth))
 			isChildren = true;
 		
 		return isChildren;
