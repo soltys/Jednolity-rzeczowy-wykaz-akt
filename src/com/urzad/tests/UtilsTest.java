@@ -51,20 +51,13 @@ public class UtilsTest {
 		Assert.assertFalse(SymbolUtils.isChild(parent, child));		
 	}
 	
-	//TODO It need a better name
-	@Test public void isNotChildTest2()
+
+	@Test public void isNotChildGrampaGrandChild()
 	{
 		SymbolInfo parent  = SymbolUtils.parseLineToSymbolInfo("0;00;;;;PRZEPISY PRAWNE DOTYCZĄCE ORGANÓW JEDNOOSOBOWYCH I KOLEGIALNYCH;B-10;Bc;");
 		SymbolInfo child = SymbolUtils.parseLineToSymbolInfo("0;00;002;0026;;Interwencje, wnioski i postulaty senatorów;B-5;Bc;");
 		
 		Assert.assertFalse(SymbolUtils.isChild(parent, child));		
-	}
-	
-	@Test public void isChildTest21333()
-	{
-		SymbolInfo parent  = SymbolUtils.parseLineToSymbolInfo("4;;;;;KULTURA, SPORT, TURYSTYKA, OŚWIATA;;;");
-		SymbolInfo child = SymbolUtils.parseLineToSymbolInfo("4;41;;;;SPORT, KULTURA FIZYCZNA;;;");
-		Assert.assertTrue(SymbolUtils.isChild(parent, child));
-	}
+	}	
 	
 }
