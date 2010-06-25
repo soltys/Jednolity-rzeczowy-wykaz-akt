@@ -40,7 +40,7 @@ public class Search extends HttpServlet {
 		 filePath = getServletContext().getRealPath(filePath);		 
 		 SymbolReader sr = new SymbolReader(filePath);		 
 		 
-		 out.print(SymbolInfo.toJSONSymbolInfoList(sr.findSimillar(searchLine)));
+		 out.print(SymbolInfo.toJSONSymbolInfoList(sr.findSimilar(searchLine)));
 		 
 	}
 

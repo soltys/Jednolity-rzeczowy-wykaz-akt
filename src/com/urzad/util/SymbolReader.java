@@ -61,7 +61,7 @@ public class SymbolReader {
 		
 	}
 	
-	public List<SymbolInfo> findSimillar(String searchLine)  throws IOException,FileNotFoundException
+	public List<SymbolInfo> findSimilar(String searchLine)  throws IOException,FileNotFoundException
 	{
 		String line = "";
 		List<SymbolInfo> results = new ArrayList<SymbolInfo>();
