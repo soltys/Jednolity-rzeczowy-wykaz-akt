@@ -26,7 +26,6 @@ public class SymbolUtilsTest {
 		Assert.assertEquals("Bc", test.ka_ki);
 		Assert.assertEquals("Postępowanie z dokumentacją wyborczą regulują  odrębne przepisy", test.comments);	
 	}
-
 	
 	@Test public void isChildTest()
 	{
@@ -49,8 +48,7 @@ public class SymbolUtilsTest {
 		SymbolInfo child = SymbolUtils.parseLineToSymbolInfo("0;00;006;0062;;Programy działania komisji i zespołów;A;Bc;");
 		
 		Assert.assertFalse(SymbolUtils.isChild(parent, child));		
-	}
-	
+	}	
 
 	@Test public void isNotChildGrampaGrandChild()
 	{
