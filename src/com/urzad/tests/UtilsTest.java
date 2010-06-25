@@ -5,7 +5,7 @@ import org.junit.Test;
 import com.urzad.util.SymbolInfo;
 import com.urzad.util.SymbolUtils;
 
-public class UtilsTest {
+public class SymbolUtilsTest {
 	@Test public void ParserLineTest()
 	{
 		//line 6
