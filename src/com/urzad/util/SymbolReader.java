@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 public class SymbolReader {
 	private String filename;
 	
@@ -38,7 +39,6 @@ public class SymbolReader {
 	{	
 		String line = "";
 		List<SymbolInfo> childrenList = new ArrayList<SymbolInfo>();
-		boolean isThereAnyChild = false;
 		FileReader fr = null;
 		BufferedReader br = null;
 	
@@ -51,11 +51,8 @@ public class SymbolReader {
 			
 			if(isChild)
 			{
-				childrenList.add(children);
-				isThereAnyChild = true;
+				childrenList.add(children);				
 			}
-			if(!isChild && isThereAnyChild)
-				break;
 			
 		}
 		br.close();
@@ -63,5 +60,29 @@ public class SymbolReader {
 	
 		return childrenList;
 		
+	}
+	
+	public List<SymbolInfo> findSimillar(String searchLine)  throws IOException,FileNotFoundException
+	{
+		String line = "";
+		List<SymbolInfo> results = new ArrayList<SymbolInfo>();
+		FileReader fr = null;
+		BufferedReader br = null;
+	
+		fr = new FileReader(filename);
+		br = new BufferedReader(fr);
+		while((line = br.readLine()) != null)
+		{		
+			if(line.toUpperCase().contains(searchLine.toUpperCase()))
+			{
+				SymbolInfo itemSimilar = SymbolUtils.parseLineToSymbolInfo(line);
+				results.add(itemSimilar);
+			}			
+		}
+		br.close();
+		fr.close();
+	
+		return results;
+	
 	}
 }

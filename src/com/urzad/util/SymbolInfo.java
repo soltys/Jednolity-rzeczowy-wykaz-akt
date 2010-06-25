@@ -39,7 +39,7 @@ public class SymbolInfo {
 		String output = "\"columns\": [";
 		for(String str: columns)
 		{
-			output = output + String.format("{\"%s\": \"%s\"},","id",str);					
+			output = output + String.format("{\"%s\": \"%s\"},","val",str);					
 		}
 	
 		output = removeLastCollon(output);
@@ -63,5 +63,16 @@ public class SymbolInfo {
 		output = output + "]}";
 		return output;
 	
+	}
+	public String toString()
+	{
+		String output = "";
+		for(String str : columns)
+		{
+			output = output + str;
+		}
+		
+		output = output + name + ka_km + ka_ki + comments;
+		return output;
 	}
 }
