@@ -2,19 +2,73 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Awesome!</title>
+<title>Symbole Klasyfikacjne</title>
 <script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-1.4.2.min.js"></script>
 <script type="text/javascript" src="startup.js"></script>
+<link rel="stylesheet" href="960_css/960.css" />
+<link rel="stylesheet" href="960_css/text.css" />
+<link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
+
+	<div id="mainList"></div>
 	
-	<ul id="mainList"></ul>
-	<a href="symbol.html">go there and die!</a>
+	<form id="searchForm">
+	<input type="text"  id="searchLine" />
+	<br/><input type="submit" name="Szukaj" value="Szukaj" id="btnSearch" />
+	<button id="btnClear">Czyść</button>
+	</form>
+	
+	<ul id="searchResults"></ul>
+	
+	<table border="1" style="width: 600px;">
+	<tr>
+	<th>Numer</th>
+	<th>Nazwa</th>
+	</tr>
+	<tr>
+	<td id="number"></td>
+	<td id="name"></td>
+	</tr>
+	</table>
+	
+	<table border="1" style="width: 600px;">
+	<tr>
+	<th>ka km</th>
+	<th>ka ki</th>
+	<th>Uwagi</th>
+	</tr>
+	<tr>		
+	<td id="ka_km"></td>
+	<td id="ka_ki"></td>
+	<td id="comments"></td>
+	</tr>
+	</table>
+
+<div id="footer">
+Crafted by <a href="http://soltys.uznam.org">Soltys</a> with <a href="http://eclipse.org">Eclipse</a>, <a href="http://tomcat.apache.org">Tomcat</a>, <a href="http://jquery.com">jQuery</a>
+</div>
 </body>
 <script type="text/javascript">
 $(document).ready(function() {
+
+	$("#btnClear").click(function() {
+		  $("#searchResults").slideUp("slow");
+		return false;	 
+	});
+	
+	$("#searchForm").submit(function() {
+		  $("#searchResults").slideUp("slow");
+		  doSearching( $("#searchLine").val() );
+		  $("#searchResults").slideDown("slow");
+		  return false;
+	});
+	
 	var list = new SymbolList($("#mainList"));
 	list.startup();
+
+	
 });
 </script>
 </html>
