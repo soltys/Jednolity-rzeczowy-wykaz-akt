@@ -87,6 +87,7 @@ function doSearching(searchLine)
 	$.ajax({
 		  url: "../api/Search",		    
 		  success: function(data){
+			$("#searchError").hide("fast");
 		  	$("#searchResults").slideUp("slow");
 			insertSearchResults(data);
 			$("#searchResults").slideDown("slow");
@@ -94,7 +95,7 @@ function doSearching(searchLine)
 		error: function(XMLHttpRequest, textStatus, errorThrown) {
 			$("#searchError").show("fast");
 			$("#searchError").text("Nic nie znaleziono");
-			$("#searchError").fadeOut(5000);
+			$("#searchError").fadeOut(4500);
 		},
 		  data: "searchLine=" + searchLine,
 		  type: "GET",

@@ -7,3 +7,10 @@ padding-bottom:5px;
 ul .expanded{
 list-style: url(list-remove.png);
 }
+
+#searchError
+{
+	font-size: 16pt;
+	font-weight: bold;
+	color: #ef6567;
+}
