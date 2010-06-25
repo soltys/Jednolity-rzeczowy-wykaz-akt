@@ -16,15 +16,35 @@
     <servlet-class>com.urzad.web.Startup</servlet-class>
   </servlet>
   <servlet>
-  	<servlet-name>StaticServlet</servlet-name>
-  	<servlet-class>com.urzad.web.StaticServlet</servlet-class>
+    <servlet-name>StaticServlet</servlet-name>
+    <servlet-class>com.urzad.web.StaticServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Startup</servlet-name>
     <url-pattern>/api/Startup</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-  	<servlet-name>StaticServlet</servlet-name>
-  	<url-pattern>/static/*</url-pattern>
+    <servlet-name>StaticServlet</servlet-name>
+    <url-pattern>/static/*</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetChildren</display-name>
+    <servlet-name>GetChildren</servlet-name>
+    <servlet-class>com.urzad.web.GetChildren</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetChildren</servlet-name>
+    <url-pattern>/api/GetChildren</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Search</display-name>
+    <servlet-name>Search</servlet-name>
+    <servlet-class>com.urzad.web.Search</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Search</servlet-name>
+    <url-pattern>/api/Search</url-pattern>
   </servlet-mapping>
 </web-app>
