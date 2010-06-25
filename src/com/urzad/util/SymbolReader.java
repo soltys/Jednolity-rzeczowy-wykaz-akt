@@ -7,11 +7,21 @@ import java.util.ArrayList;
 import java.util.List;
 public class SymbolReader {
 	private String filename;
-	
-	public  SymbolReader(String filename) {
+	FileReader fr = null;
+	BufferedReader br = null;
+
+	public  SymbolReader(String filename) throws FileNotFoundException {
 		this.filename = filename;
+		
+		fr = new FileReader(filename);
+		br = new BufferedReader(fr);
 	}	
 
+	protected void finalize() throws Throwable
+	{	 
+	  br.close();
+	  fr.close();
+	} 
 	public List<SymbolInfo> getTopLevel() throws IOException,FileNotFoundException
 	{
 		String line = "";
@@ -28,21 +38,14 @@ public class SymbolReader {
 			{
 				topLevelList.add(topLevel);
 			}
-		}
-		br.close();
-		fr.close();
-	
+		}	
 		return topLevelList;
 	}
 	public List<SymbolInfo> findChildrens(SymbolInfo parrent) throws IOException,FileNotFoundException
 	{	
 		String line = "";
 		List<SymbolInfo> childrenList = new ArrayList<SymbolInfo>();
-		FileReader fr = null;
-		BufferedReader br = null;
-	
-		fr = new FileReader(filename);
-		br = new BufferedReader(fr);
+		
 		while((line = br.readLine()) != null)
 		{
 			SymbolInfo children = SymbolUtils.parseLineToSymbolInfo(line);
@@ -53,9 +56,7 @@ public class SymbolReader {
 				childrenList.add(children);				
 			}
 			
-		}
-		br.close();
-		fr.close();
+		}	
 	
 		return childrenList;
 		
@@ -65,11 +66,7 @@ public class SymbolReader {
 	{
 		String line = "";
 		List<SymbolInfo> results = new ArrayList<SymbolInfo>();
-		FileReader fr = null;
-		BufferedReader br = null;
 	
-		fr = new FileReader(filename);
-		br = new BufferedReader(fr);
 		while((line = br.readLine()) != null)
 		{		
 			if(line.toUpperCase().contains(searchLine.toUpperCase()))
@@ -77,9 +74,7 @@ public class SymbolReader {
 				SymbolInfo itemSimilar = SymbolUtils.parseLineToSymbolInfo(line);
 				results.add(itemSimilar);
 			}			
-		}
-		br.close();
-		fr.close();
+		}		
 	
 		return results;
 	
