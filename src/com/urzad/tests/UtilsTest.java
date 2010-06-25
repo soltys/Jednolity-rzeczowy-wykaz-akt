@@ -30,26 +30,41 @@ public class UtilsTest {
 	
 	@Test public void isChildTest()
 	{
-		SymbolInfo parrent  = SymbolUtils.parseLineToSymbolInfo("0;00;003;;;Referenda;;;");
-		SymbolInfo children = SymbolUtils.parseLineToSymbolInfo("0;00;003;0030;;Referendum ogólnokrajowe;B-5;Bc;Postępowanie z dokumentacją  referendum regulują odrębne przepisy");
+		SymbolInfo parent  = SymbolUtils.parseLineToSymbolInfo("0;00;003;;;Referenda;;;");
+		SymbolInfo child = SymbolUtils.parseLineToSymbolInfo("0;00;003;0030;;Referendum ogólnokrajowe;B-5;Bc;Postępowanie z dokumentacją  referendum regulują odrębne przepisy");
 		
-		Assert.assertTrue(SymbolUtils.isChild(parrent, children));		
+		Assert.assertTrue(SymbolUtils.isChild(parent, child));		
 	}
 	
-	@Test public void isNotChildrTest()
+	@Test public void isTopLevelChild()
 	{
-		SymbolInfo parrent  = SymbolUtils.parseLineToSymbolInfo("0;00;005;;;Działalność organów gminy;;;");
-		SymbolInfo children = SymbolUtils.parseLineToSymbolInfo("0;00;006;0062;;Programy działania komisji i zespołów;A;Bc;");
+		SymbolInfo parent = SymbolUtils.parseLineToSymbolInfo("0;;;;;ORGANY JEDNOOSOBOWE I KOLEGIALNE;;;");
+		SymbolInfo child = SymbolUtils.parseLineToSymbolInfo("0;00;;;;PRZEPISY PRAWNE DOTYCZĄCE ORGANÓW JEDNOOSOBOWYCH I KOLEGIALNYCH;B-10;Bc;");
+		Assert.assertTrue(SymbolUtils.isChild(parent, child));
+	}
+	
+	@Test public void isNotChildTest()
+	{
+		SymbolInfo parent  = SymbolUtils.parseLineToSymbolInfo("0;00;005;;;Działalność organów gminy;;;");
+		SymbolInfo child = SymbolUtils.parseLineToSymbolInfo("0;00;006;0062;;Programy działania komisji i zespołów;A;Bc;");
 		
-		Assert.assertFalse(SymbolUtils.isChild(parrent, children));		
+		Assert.assertFalse(SymbolUtils.isChild(parent, child));		
 	}
 	
 	//TODO It need a better name
-	@Test public void isNotChildrTest2()
+	@Test public void isNotChildTest2()
 	{
-		SymbolInfo parrent  = SymbolUtils.parseLineToSymbolInfo("0;00;;;;PRZEPISY PRAWNE DOTYCZĄCE ORGANÓW JEDNOOSOBOWYCH I KOLEGIALNYCH;B-10;Bc;");
-		SymbolInfo children = SymbolUtils.parseLineToSymbolInfo("0;00;002;0026;;Interwencje, wnioski i postulaty senatorów;B-5;Bc;");
+		SymbolInfo parent  = SymbolUtils.parseLineToSymbolInfo("0;00;;;;PRZEPISY PRAWNE DOTYCZĄCE ORGANÓW JEDNOOSOBOWYCH I KOLEGIALNYCH;B-10;Bc;");
+		SymbolInfo child = SymbolUtils.parseLineToSymbolInfo("0;00;002;0026;;Interwencje, wnioski i postulaty senatorów;B-5;Bc;");
 		
-		Assert.assertFalse(SymbolUtils.isChild(parrent, children));		
+		Assert.assertFalse(SymbolUtils.isChild(parent, child));		
 	}
+	
+	@Test public void isChildTest21333()
+	{
+		SymbolInfo parent  = SymbolUtils.parseLineToSymbolInfo("4;;;;;KULTURA, SPORT, TURYSTYKA, OŚWIATA;;;");
+		SymbolInfo child = SymbolUtils.parseLineToSymbolInfo("4;41;;;;SPORT, KULTURA FIZYCZNA;;;");
+		Assert.assertTrue(SymbolUtils.isChild(parent, child));
+	}
+	
 }
