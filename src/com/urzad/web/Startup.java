@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.urzad.util.SymbolInfo;
 import com.urzad.util.SymbolReader;
-import com.urzad.util.SymbolUtils;
 /**
  * Servlet implementation class Symbol
  */
