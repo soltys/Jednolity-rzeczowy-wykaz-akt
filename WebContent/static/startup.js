@@ -158,7 +158,7 @@ function createShortTree(data)
 
 	$.each(data.list, function(i,item){
 		var itemToAdd = $("<li>").text("(" + frontNumber(item) + ") " + item.name);
-		itemToAdd.css("margin-left", 15*i + "px");
+		itemToAdd.css("margin-left", 10*i + "px");
 		itemToAdd.addClass(frontNumber(item));
 		shortTree.append(itemToAdd);	
 		
