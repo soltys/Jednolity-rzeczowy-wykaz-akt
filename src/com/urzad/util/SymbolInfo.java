@@ -19,8 +19,8 @@ public class SymbolInfo {
 		ka_km = "";   
 		ka_ki = "";   
 		comments = "";
-	}
-	
+	}	
+
 	public String toJSON()
 	{
 		String strJSON = "{";
@@ -42,12 +42,12 @@ public class SymbolInfo {
 			output = output + String.format("{\"%s\": \"%s\"},","val",str);					
 		}
 	
-		output = removeLastCollon(output);
+		output = removeLastCharacter(output);
 		output = output + "]";
 		return output;
 	}
 
-	private static String removeLastCollon(String output) {
+	private static String removeLastCharacter(String output) {
 		output = output.substring(0, output.length() - 1 );
 		return output;
 	}
@@ -59,7 +59,7 @@ public class SymbolInfo {
 		{
 			output = output + si.toJSON() + ",";
 		}
-		output = removeLastCollon(output);
+		output = removeLastCharacter(output);
 		output = output + "]}";
 		return output;
 	
@@ -74,5 +74,27 @@ public class SymbolInfo {
 		
 		output = output + name + ka_km + ka_ki + comments;
 		return output;
+	}
+	private String getLastNotEmptyColumn()
+	{
+		String output = "";
+		for(String str : columns)
+		{
+			if(!str.isEmpty())
+				output = str;
+		}
+		return output;
+	}	
+
+	public boolean isSymbolParent(SymbolInfo parent)
+	{
+		boolean isParent = true;
+		int index = parent.getLastNotEmptyColumn().length();
+		for(int i=0 ;i< index ;i++)
+		{		
+			if(!columns[i].equalsIgnoreCase(parent.columns[i]))
+				isParent = false;			
+		}
+		return isParent;
 	}
 }

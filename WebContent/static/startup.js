@@ -54,7 +54,10 @@ function insertDataIntoTree(data,tree)
 			}
 			else{			
 			expandNode(item.columns[0].val, item.columns[1].val, item.columns[2].val,
-					item.columns[3].val, item.columns[4].val, itemToAdd);
+					   item.columns[3].val, item.columns[4].val, itemToAdd);
+			
+			getShortTreeAjax(item.columns[0].val, item.columns[1].val, item.columns[2].val,
+							 item.columns[3].val, item.columns[4].val);
 			itemToAdd.addClass("expanded");
 			}
 		return false;
@@ -64,6 +67,7 @@ function insertDataIntoTree(data,tree)
 	
 	tree.append(newNode);
 }
+
 function expandNode(col1,col2,col3,col4,col5,mainTree)
 {
 	$.ajax({
@@ -91,6 +95,8 @@ function doSearching(searchLine)
 		  	$("#searchResults").slideUp("slow");
 			insertSearchResults(data);
 			$("#searchResults").slideDown("slow");
+			
+			$(".btnClear").show();
 		},
 		error: function(XMLHttpRequest, textStatus, errorThrown) {
 			$("#searchError").show("fast");
@@ -118,6 +124,44 @@ function insertSearchResults(data) {
 			$("#ka_ki").text(item.ka_ki);
 			$("#ka_km").text(item.ka_km);
 			$("#comments").text(item.comments);
+			
+			getShortTreeAjax(item.columns[0].val, item.columns[1].val, item.columns[2].val,
+					 item.columns[3].val, item.columns[4].val);
 		});
 	});	
+}
+
+//
+// getShortTree
+//
+
+function getShortTreeAjax(col1,col2,col3,col4,col5)
+{
+	$.ajax({
+		  url: "../api/GetShortTree",		    
+		  success: function(data){
+			$("#shortTree").empty();
+			createShortTree(data);
+		},
+		error: function(XMLHttpRequest, textStatus, errorThrown) {
+			$("#shortTree").text("Not awesome error");
+			
+		},
+		  data: "col1="+col1+"&col2="+col2+"&col3="+col3+"&col4="+col4+"&col5="+col5,
+		  type: "GET",
+		  dataType: "json"
+		});
+}
+function createShortTree(data)
+{
+	var shortTree = $("<ul>");
+
+	$.each(data.list, function(i,item){
+		var itemToAdd = $("<li>").text("(" + frontNumber(item) + ") " + item.name);
+		itemToAdd.css("margin-left", 15*i + "px");
+		itemToAdd.addClass(frontNumber(item));
+		shortTree.append(itemToAdd);	
+		
+	});
+	$("#shortTree").append(shortTree);
 }

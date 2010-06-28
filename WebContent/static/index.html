@@ -5,23 +5,29 @@
 <title>Symbole Klasyfikacjne</title>
 <script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-1.4.2.min.js"></script>
 <script type="text/javascript" src="startup.js"></script>
+<script type="text/javascript" src="jquery.scrollTo-1.4.2-min.js"></script>
 <link rel="stylesheet" href="960_css/960.css" />
 <link rel="stylesheet" href="960_css/text.css" />
 <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
+	<h1>Jednolity rzeczowy wykaz akt</h1>
 
 	<div id="mainList"></div>
+	<button id="btnRollUp">Zwiń całe drzewo</button>
 	
+	<h3>Szukanie</h3>
 	<form id="searchForm">
-	<input type="text"  id="searchLine" /><div id="searchError"></div>
-	<br/><input type="submit" name="Szukaj" value="Szukaj" id="btnSearch" />
-	<button id="btnClear">Czyść</button>
-	</form>
+	<input type="text"  id="searchLine" />
+	<input type="submit" name="Szukaj" value="Szukaj" id="btnSearch" />
 	
+	</form>	
+	<button class="btnClear">Czyść</button>
 	<ul id="searchResults"></ul>
+	<div id="searchError"></div>
+	<button class="btnClear">Czyść</button>
 	
+	<h3>Informacje</h3>
 	<table border="1" style="width: 600px;">
 	<tr>
 	<th>Numer</th>
@@ -44,32 +50,48 @@
 	<td id="ka_ki"></td>
 	<td id="comments"></td>
 	</tr>
+	<tr>
+	<td colspan="3"><center><b>Skrócone drzewo</b></center></td>
+	</tr>
+	<tr>
+	<td id="shortTree" colspan="3"></td>
+	</tr>
 	</table>
 
 <div id="footer">
-Crafted by <a href="http://soltys.uznam.org">Soltys</a> with <a href="http://java.com">Java</a>, <a href="http://eclipse.org">Eclipse</a>, <a href="http://tomcat.apache.org">Tomcat</a> and <a href="http://jquery.com">jQuery</a>
+<p class="goUp"><b>Idź do góry</b></p>
+<p>Crafted by <a href="http://soltys.uznam.org">Soltys</a> with <a href="http://java.com">Java</a>, <a href="http://eclipse.org">Eclipse</a>, <a href="http://tomcat.apache.org">Tomcat</a> and <a href="http://jquery.com">jQuery</a></p>
 </div>
 </body>
 <script type="text/javascript">
 $(document).ready(function() {
-
-	$("#btnClear").click(function() {
+	
+	$(".btnClear").hide();
+	$(".btnClear").click(function() {
+		  $(".btnClear").hide();
 		  $("#searchResults").slideUp("slow");
-		  $("#searchResults").children().remove();
+		  $("#searchResults").children().remove();		  
+		return false;	 
+	});
+
+	$("#btnRollUp").click(function() {
+		$(".expanded").children().slideUp("slow");
+		$(".expanded").removeClass("expanded");
 		return false;	 
 	});
 	
-	$("#searchForm").submit(function() {
-	
-		  doSearching( $("#searchLine").val() );
-		  
+	$("#searchForm").submit(function() {	
+		  doSearching( $("#searchLine").val() );				  
 		  return false;
+	});
+
+	$(".goUp").click(function() {
+		$.scrollTo(0, {duration: 500});
+		return false;	 
 	});
 	
 	var list = new SymbolList($("#mainList"));
 	list.startup();
-
-	
 });
 </script>
 </html>

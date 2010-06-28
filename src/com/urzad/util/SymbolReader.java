@@ -79,4 +79,19 @@ public class SymbolReader {
 		return results;
 	
 	}
+	public List<SymbolInfo> getShortTree(SymbolInfo element) throws IOException,FileNotFoundException
+	{
+		String line = "";
+		List<SymbolInfo> results = new ArrayList<SymbolInfo>();
+		while((line = br.readLine()) != null)
+		{		
+			//TODO Find better name for variable
+			SymbolInfo foo = SymbolUtils.parseLineToSymbolInfo(line);
+			if(element.isSymbolParent(foo))
+			{				
+				results.add(foo);
+			}			
+		}		
+		return results;
+	}
 }

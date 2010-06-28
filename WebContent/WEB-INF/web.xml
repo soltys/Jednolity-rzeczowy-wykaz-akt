@@ -47,4 +47,14 @@
     <servlet-name>Search</servlet-name>
     <url-pattern>/api/Search</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetShortTree</display-name>
+    <servlet-name>GetShortTree</servlet-name>
+    <servlet-class>com.urzad.web.GetShortTree</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetShortTree</servlet-name>
+    <url-pattern>/api/GetShortTree</url-pattern>
+  </servlet-mapping>
 </web-app>
