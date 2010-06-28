@@ -10,6 +10,10 @@ ul .expanded{
 list-style: url(list-remove.png);
 }
 
+.selected{
+background-color: #ffb;
+}
+
 #searchError
 {
 	font-size: 16pt;

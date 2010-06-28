@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Symbole Klasyfikacjne</title>
+<title>Jednolity rzeczowy wykaz akt</title>
 <script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-1.4.2.min.js"></script>
 <script type="text/javascript" src="startup.js"></script>
 <script type="text/javascript" src="jquery.scrollTo-1.4.2-min.js"></script>
@@ -59,7 +59,7 @@
 	</table>
 
 <div id="footer">
-<p class="goUp"><b>Idź do góry</b></p>
+<button id="goUp"><b>Idź do góry</b></button>
 <p>Crafted by <a href="http://soltys.uznam.org">Soltys</a> with <a href="http://java.com">Java</a>, <a href="http://eclipse.org">Eclipse</a>, <a href="http://tomcat.apache.org">Tomcat</a> and <a href="http://jquery.com">jQuery</a></p>
 </div>
 </body>
@@ -85,7 +85,7 @@ $(document).ready(function() {
 		  return false;
 	});
 
-	$(".goUp").click(function() {
+	$("#goUp").click(function() {
 		$.scrollTo(0, {duration: 500});
 		return false;	 
 	});

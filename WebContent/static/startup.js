@@ -45,8 +45,9 @@ function insertDataIntoTree(data,tree)
 			$("#name").text(item.name);
 			$("#ka_ki").text(item.ka_ki);
 			$("#ka_km").text(item.ka_km);
-			$("#comments").text(item.comments);
-			$("#ka_ki").animate({"background-color": "#ffb"}, "slow");
+			$("#comments").text(item.comments);		
+
+			
 			if(itemToAdd.hasClass("expanded")){
 				$(this).children().slideUp("slow");
 				
@@ -124,6 +125,9 @@ function insertSearchResults(data) {
 			$("#ka_ki").text(item.ka_ki);
 			$("#ka_km").text(item.ka_km);
 			$("#comments").text(item.comments);
+			
+			$(".selected").removeClass('selected'); // remove selected class from DOM
+			$(this).addClass("selected");
 			
 			getShortTreeAjax(item.columns[0].val, item.columns[1].val, item.columns[2].val,
 					 item.columns[3].val, item.columns[4].val);
