@@ -1,4 +1,4 @@
-﻿package com.urzad.web;
+package com.urzad.web;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -28,9 +28,9 @@ public class Startup extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 response.setContentType("text/html"); 
-		 request.setCharacterEncoding("UTF-8");
-		 response.setCharacterEncoding("UTF-8");
+		 response.setContentType("application/json");
+		 request.setCharacterEncoding("UTF-16");
+		 response.setCharacterEncoding("UTF-16");
 		 PrintWriter out = response.getWriter();
 	
 		 String filePath = "symbol.csv";

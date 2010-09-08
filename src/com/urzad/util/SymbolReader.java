@@ -1,36 +1,32 @@
 package com.urzad.util;
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 public class SymbolReader {
-	private String filename;
-	FileReader fr = null;
+	
 	BufferedReader br = null;
 
-	public  SymbolReader(String filename) throws FileNotFoundException {
-		this.filename = filename;
+	public  SymbolReader(String filename) throws FileNotFoundException, UnsupportedEncodingException {
 		
-		fr = new FileReader(filename);
-		br = new BufferedReader(fr);
+		br = new BufferedReader(new InputStreamReader(new FileInputStream(filename), "UTF-8"));                
+                
 	}	
 
 	protected void finalize() throws Throwable
-	{	 
+	{
 	  br.close();
-	  fr.close();
+          super.finalize();
 	} 
 	public List<SymbolInfo> getTopLevel() throws IOException,FileNotFoundException
 	{
 		String line = "";
 		List<SymbolInfo> topLevelList = new ArrayList<SymbolInfo>();
-		FileReader fr = null;
-		BufferedReader br = null;
-	
-		fr = new FileReader(filename);
-		br = new BufferedReader(fr);
+		
 		while((line = br.readLine()) != null)
 		{
 			SymbolInfo topLevel = SymbolUtils.parseLineToSymbolInfo(line);						

@@ -3,7 +3,7 @@ function SymbolList (mainTree){
 	
 this.startup = function () {		
 $.ajax({
-	  url: "../api/Startup",		    
+	  url: "api/Startup",		    
 	  success: function(data){	 
 		insertDataIntoTree(data,mainTree);	 			
 	},
@@ -72,7 +72,7 @@ function insertDataIntoTree(data,tree)
 function expandNode(col1,col2,col3,col4,col5,mainTree)
 {
 	$.ajax({
-		  url: "../api/GetChildren",		    
+		  url: "api/GetChildren",		    
 		  success: function(data){
 			
 			insertDataIntoTree(data,mainTree);	 			
@@ -90,7 +90,7 @@ function expandNode(col1,col2,col3,col4,col5,mainTree)
 function doSearching(searchLine)
 {
 	$.ajax({
-		  url: "../api/Search",		    
+		  url: "api/Search",		    
 		  success: function(data){
 			$("#searchError").hide("fast");
 		  	$("#searchResults").slideUp("slow");
@@ -142,7 +142,7 @@ function insertSearchResults(data) {
 function getShortTreeAjax(col1,col2,col3,col4,col5)
 {
 	$.ajax({
-		  url: "../api/GetShortTree",		    
+		  url: "api/GetShortTree",		    
 		  success: function(data){
 			$("#shortTree").empty();
 			createShortTree(data);
