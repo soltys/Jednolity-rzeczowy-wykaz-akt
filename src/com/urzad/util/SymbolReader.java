@@ -10,10 +10,12 @@ import java.util.List;
 public class SymbolReader {
 	
 	BufferedReader br = null;
+	final static String FILENAME = "symbol.csv";
+	
 
-	public  SymbolReader(String filename) throws FileNotFoundException, UnsupportedEncodingException {
+	public  SymbolReader(String filePath) throws FileNotFoundException, UnsupportedEncodingException {
 		
-		br = new BufferedReader(new InputStreamReader(new FileInputStream(filename), "UTF-8"));                
+		br = new BufferedReader(new InputStreamReader(new FileInputStream(filePath), "UTF-8"));                
                 
 	}	
 
@@ -22,6 +24,11 @@ public class SymbolReader {
 	  br.close();
           super.finalize();
 	} 
+	
+	public static String getFILENAME() {
+		return FILENAME;
+	}
+	
 	public List<SymbolInfo> getTopLevel() throws IOException,FileNotFoundException
 	{
 		String line = "";
@@ -82,10 +89,10 @@ public class SymbolReader {
 		while((line = br.readLine()) != null)
 		{		
 			//TODO Find better name for variable
-			SymbolInfo foo = SymbolUtils.parseLineToSymbolInfo(line);
-			if(element.isSymbolParent(foo))
+			SymbolInfo symbolInfo = SymbolUtils.parseLineToSymbolInfo(line);
+			if(element.isSymbolParent(symbolInfo))
 			{				
-				results.add(foo);
+				results.add(symbolInfo);
 			}			
 		}		
 		return results;

@@ -53,8 +53,8 @@ public class GetChildren extends HttpServlet {
 		 parent.columns[3] = col4;
 		 parent.columns[4] = col5;
 		 
-		 String filePath = "symbol.csv";
-		 filePath = getServletContext().getRealPath(filePath);		 
+		 
+		 String filePath = getServletContext().getRealPath(SymbolReader.getFILENAME());		 
 		 SymbolReader sr = new SymbolReader(filePath);
 		 out.print(SymbolInfo.toJSONSymbolInfoList(sr.findChildrens(parent)));
 	}

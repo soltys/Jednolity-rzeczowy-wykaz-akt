@@ -28,13 +28,12 @@ public class Startup extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 response.setContentType("application/json");
-		 request.setCharacterEncoding("UTF-16");
-		 response.setCharacterEncoding("UTF-16");
+		 response.setContentType("text/html");
+		 request.setCharacterEncoding("UTF-8");
+		 response.setCharacterEncoding("UTF-8");
 		 PrintWriter out = response.getWriter();
-	
-		 String filePath = "symbol.csv";
-		 filePath = getServletContext().getRealPath(filePath);		 
+		 
+		 String filePath = getServletContext().getRealPath(SymbolReader.getFILENAME());		 
 		 SymbolReader sr = new SymbolReader(filePath);
 		 
 		 out.print(SymbolInfo.toJSONSymbolInfoList(sr.getTopLevel()));

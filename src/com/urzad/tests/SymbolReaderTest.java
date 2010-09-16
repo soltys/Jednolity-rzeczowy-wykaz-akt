@@ -15,6 +15,7 @@ public class SymbolReaderTest {
 	@Test public void getTopLevelTest() throws FileNotFoundException, IOException
 	{
 		SymbolReader sr = new SymbolReader("symbol.csv");
+		
 		List<SymbolInfo> topLevelList = sr.getTopLevel();
 		Assert.assertEquals(10, topLevelList.toArray().length);
 		
