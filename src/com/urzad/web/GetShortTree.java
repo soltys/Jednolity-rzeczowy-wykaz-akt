@@ -22,7 +22,7 @@ public class GetShortTree extends HttpServlet {
      */
     public GetShortTree() {
         super();
-        // TODO Auto-generated constructor stub
+        
     }
     
     private String ifNullReturnEmptyString(String str) {
@@ -66,7 +66,7 @@ public class GetShortTree extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 	}
 
 }

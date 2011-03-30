@@ -20,9 +20,7 @@ public class SymbolUtils {
 		case 6:
 			symbolInfo.name = data[5];
 		default:			
-		}
-			
-		
+		}		
 		return symbolInfo;
 	}
 	

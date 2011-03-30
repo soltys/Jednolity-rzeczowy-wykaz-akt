@@ -44,6 +44,7 @@ public class SymbolReader {
 		}	
 		return topLevelList;
 	}
+	
 	public List<SymbolInfo> findChildrens(SymbolInfo parrent) throws IOException,FileNotFoundException
 	{	
 		String line = "";
