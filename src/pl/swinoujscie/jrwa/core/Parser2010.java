@@ -1,14 +1,14 @@
 package pl.swinoujscie.jrwa.core;
 
-public class JRWAParser2010 extends JRWAParser {
+public class Parser2010 extends Parser {
 
 	
 	@Override
-	public JRWAEntity parse(String stringToParse) {
+	public Entity parse(String stringToParse) {
 		String[] data = stringToParse.split(";");
-		JRWAEntity2010 jrwaEntity2010 = new JRWAEntity2010();
+		Entity2010 jrwaEntity2010 = new Entity2010();
 		int numberColumns = jrwaEntity2010.getNumberOfColumns();		
-		JRWAColumns columns = getJRWAColumns(data, numberColumns);		
+		Columns columns = getJRWAColumns(data, numberColumns);		
 		jrwaEntity2010.setColumns(columns);
 		switch (data.length) {
 		case 9:
@@ -24,9 +24,9 @@ public class JRWAParser2010 extends JRWAParser {
 		return jrwaEntity2010;		
 	}
 
-	private JRWAColumns getJRWAColumns(String[] data, int numberColumns)
+	private Columns getJRWAColumns(String[] data, int numberColumns)
 	{
-		JRWAColumns jrwaColumns = new JRWAColumns(numberColumns);
+		Columns jrwaColumns = new Columns(numberColumns);
 		String[] columns = new String[numberColumns];
 		columns[0] = data[0];
 		columns[1] = data[1];

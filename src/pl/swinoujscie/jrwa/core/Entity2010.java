@@ -1,11 +1,11 @@
 package pl.swinoujscie.jrwa.core;
-public class JRWAEntity2010 extends JRWAEntity {
+public class Entity2010 extends Entity {
 	final static private int NUMBER_OF_COLUMNS = 5;
 	
 	private String ka_ki;
-	public JRWAEntity2010()
+	public Entity2010()
 	{
-		this.setColumns(new JRWAColumns(NUMBER_OF_COLUMNS));
+		this.setColumns(new Columns(NUMBER_OF_COLUMNS));
 	}
 	public int getNumberOfColumns() {
 		return NUMBER_OF_COLUMNS;
@@ -27,14 +27,14 @@ public class JRWAEntity2010 extends JRWAEntity {
 
 
 	@Override
-	public boolean isJRWAEntityParent(JRWAEntity children) {
+	public boolean isJRWAEntityParent(Entity children) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 
 	@Override
-	public boolean isJRWAEntityChildren(JRWAEntity parent) {
+	public boolean isJRWAEntityChildren(Entity parent) {
 		// TODO Auto-generated method stub
 		return false;
 	}

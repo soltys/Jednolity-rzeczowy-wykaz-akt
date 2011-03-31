@@ -1,15 +1,15 @@
 package pl.swinoujscie.jrwa.core;
-public abstract class JRWAEntity implements JRWA {
+public abstract class Entity implements JRWA {
 	
-	private JRWAColumns columns;
+	private Columns columns;
 	private String name;
 	private String ka_km;	
 	private String comments;
 	
-	public void setColumns(JRWAColumns columns) {
+	public void setColumns(Columns columns) {
 		this.columns = columns;
 	}
-	public JRWAColumns getColumns() {
+	public Columns getColumns() {
 		return columns;
 	}
 	public String getName() {
@@ -31,8 +31,8 @@ public abstract class JRWAEntity implements JRWA {
 		this.comments = comments;
 	}
 	public abstract String toJSON();
-	public abstract boolean isJRWAEntityParent(JRWAEntity children);
-	public abstract boolean isJRWAEntityChildren(JRWAEntity parent);
+	public abstract boolean isJRWAEntityParent(Entity children);
+	public abstract boolean isJRWAEntityChildren(Entity parent);
 	public abstract String getVersion();
 	public abstract int getNumberOfColumns();
 	

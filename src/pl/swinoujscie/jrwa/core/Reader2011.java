@@ -2,28 +2,28 @@ package pl.swinoujscie.jrwa.core;
 
 import java.util.List;
 
-public class JRWAReader2011 extends JRWAReader {
+public class Reader2011 extends Reader {
 
 	@Override
-	public List<JRWAEntity> getTopLevel() {
+	public List<Entity> getTopLevel() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<JRWAEntity> findChildrens(JRWAEntity parrent) {
+	public List<Entity> findChildrens(Entity parrent) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<JRWAEntity> findSimilar(String searchLine) {
+	public List<Entity> findSimilar(String searchLine) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<JRWAEntity> getShortTree(JRWAEntity element) {
+	public List<Entity> getShortTree(Entity element) {
 		// TODO Auto-generated method stub
 		return null;
 	}

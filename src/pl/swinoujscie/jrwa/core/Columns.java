@@ -1,6 +1,6 @@
 package pl.swinoujscie.jrwa.core;
 
-public class JRWAColumns implements Comparable<JRWAColumns>{
+public class Columns implements Comparable<Columns>{
 	private String[] columns;
 	
 	public String[] getColumns() {
@@ -11,7 +11,7 @@ public class JRWAColumns implements Comparable<JRWAColumns>{
 		this.columns = columns;
 	}
 
-	public JRWAColumns(int numberColumns) {
+	public Columns(int numberColumns) {
 		columns = new String[numberColumns];
 	}
 	
@@ -43,7 +43,7 @@ public class JRWAColumns implements Comparable<JRWAColumns>{
 	}
 
 	@Override
-	public int compareTo(JRWAColumns o) {
+	public int compareTo(Columns o) {
 		String lhsCompareData = columns[getLastNotEmptyColumn()];
 		String rhsCompareData = o.getColumns()[getLastNotEmptyColumn()];
 		int lhsDataLength = lhsCompareData.length();
