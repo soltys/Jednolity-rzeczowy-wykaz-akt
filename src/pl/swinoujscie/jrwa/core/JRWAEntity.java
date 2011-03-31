@@ -1,6 +1,6 @@
 package pl.swinoujscie.jrwa.core;
 
-public abstract class JRWAEntity {
+public abstract class JRWAEntity implements JRWA {
 	
 	private String name;
 	private String ka_km;	
@@ -27,5 +27,7 @@ public abstract class JRWAEntity {
 	public abstract String toJSON();
 	public abstract boolean isJRWAEntityParent(JRWAEntity children);
 	public abstract boolean isJRWAEntityChildren(JRWAEntity parent);
+	public abstract String getVersion();
+	public abstract int getNumberOfColumns();
 	
 }

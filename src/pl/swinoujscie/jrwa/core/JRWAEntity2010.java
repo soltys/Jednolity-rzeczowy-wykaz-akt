@@ -6,7 +6,7 @@ public class JRWAEntity2010 extends JRWAEntity {
 	private String[] columns = new String [NUMBER_OF_COLUMNS];
 	private String ka_ki;
 	
-	public static int getNumberOfColumns() {
+	public int getNumberOfColumns() {
 		return NUMBER_OF_COLUMNS;
 	}
 	
@@ -47,5 +47,10 @@ public class JRWAEntity2010 extends JRWAEntity {
 	public boolean isJRWAEntityChildren(JRWAEntity parent) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public String getVersion() {		
+		return "2010";
 	}
 }

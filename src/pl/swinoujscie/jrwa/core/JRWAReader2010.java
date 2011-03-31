@@ -28,4 +28,9 @@ public class JRWAReader2010 extends JRWAReader {
 		return null;
 	}
 
+	@Override
+	public String getVersion() {		
+		return "2010";
+	}
+
 }

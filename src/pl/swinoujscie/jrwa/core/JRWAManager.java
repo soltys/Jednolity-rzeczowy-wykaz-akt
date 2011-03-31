@@ -1,6 +1,6 @@
 package pl.swinoujscie.jrwa.core;
 
-public abstract class JRWAManager {
+public abstract class JRWAManager implements JRWA {
 	private JRWAReader jrwaReader;
 	
 	public abstract String getVersion();

@@ -3,7 +3,7 @@ package pl.swinoujscie.jrwa.core;
 import java.io.BufferedReader;
 import java.util.List;
 
-public abstract class JRWAReader {
+public abstract class JRWAReader implements JRWA {
 	BufferedReader bufferedReaderr = null;
 	private String FILENAME;
 	

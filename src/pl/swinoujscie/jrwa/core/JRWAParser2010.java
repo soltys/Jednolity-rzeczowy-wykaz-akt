@@ -6,7 +6,7 @@ public class JRWAParser2010 extends JRWAParser {
 	public JRWAEntity parse(String stringToParse) {
 		String[] data = stringToParse.split(";");
 		JRWAEntity2010 jrwaEntity2010 = new JRWAEntity2010();
-		int numberColumns = JRWAEntity2010.getNumberOfColumns();
+		int numberColumns = jrwaEntity2010.getNumberOfColumns();
 		String[] columns = new String[numberColumns];	
 		columns[0] = data[0];
 		columns[1] = data[1];
@@ -26,5 +26,10 @@ public class JRWAParser2010 extends JRWAParser {
 		default:			
 		}		
 		return jrwaEntity2010;		
+	}
+
+	@Override
+	public String getVersion() {		
+		return "2010";
 	}
 }

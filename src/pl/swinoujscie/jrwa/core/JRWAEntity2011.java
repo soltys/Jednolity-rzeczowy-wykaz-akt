@@ -1,7 +1,7 @@
 package pl.swinoujscie.jrwa.core;
 
 public class JRWAEntity2011 extends JRWAEntity {
-	final static public int NUMBER_OF_COLUMNS = 4;
+	final static private int NUMBER_OF_COLUMNS = 4;
 	public String[] columns = new String [NUMBER_OF_COLUMNS];
 	
 	
@@ -23,5 +23,16 @@ public class JRWAEntity2011 extends JRWAEntity {
 	public boolean isJRWAEntityChildren(JRWAEntity parent) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+
+	@Override
+	public String getVersion() {
+		return "2011";
+	}
+
+
+	public int getNumberOfColumns() {	
+		return NUMBER_OF_COLUMNS;
 	}
 }
