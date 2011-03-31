@@ -48,7 +48,7 @@ class JRWAColumns implements Comparable<JRWAColumns>{
 	
 	public String[] fillAllColumns()
 	{
-		String stringNumber = columns[lastNotEmptyColumn()];		
+		String stringNumber = columns[getLastNotEmptyColumn()];		
 		int numberColumns = stringNumber.length();
 		String[] columns = new String[numberColumns];
 		String helper = "";
@@ -61,7 +61,7 @@ class JRWAColumns implements Comparable<JRWAColumns>{
 		return columns;
 	}
 	
-	public int lastNotEmptyColumn()
+	public int getLastNotEmptyColumn()
 	{
 		int index = 0;
 		for(String str: columns)
@@ -75,8 +75,25 @@ class JRWAColumns implements Comparable<JRWAColumns>{
 
 	@Override
 	public int compareTo(JRWAColumns o) {
-		//TODO Do this as fast I can		
+		String lhsCompareData = columns[getLastNotEmptyColumn()];
+		String rhsCompareData = o.getColumns()[getLastNotEmptyColumn()];
+		int lhsDataLength = lhsCompareData.length();
+		int rhsDataLength = rhsCompareData.length();
+		int minSize = ( lhsDataLength < rhsDataLength) ? lhsDataLength : rhsDataLength;
 		
+		for(int index = 0; index <minSize; index++)
+		{
+			int lhsValue = Integer.valueOf(lhsCompareData.substring(index, index+1)); //Get single number			
+			int rhsValue = Integer.valueOf(rhsCompareData.substring(index,index+1));
+			if(lhsValue < rhsValue)
+				return 1;
+			if(lhsValue > rhsValue)
+				return -1;
+		}	
+		if(lhsDataLength < rhsDataLength)
+			return 1;
+		else if(lhsDataLength > rhsDataLength)
+			return -1;
 		return 0;
 	}
 	
