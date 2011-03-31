@@ -1,10 +1,17 @@
 package pl.swinoujscie.jrwa.core;
 public abstract class JRWAEntity implements JRWA {
 	
+	private JRWAColumns columns;
 	private String name;
 	private String ka_km;	
 	private String comments;
 	
+	public void setColumns(JRWAColumns columns) {
+		this.columns = columns;
+	}
+	public JRWAColumns getColumns() {
+		return columns;
+	}
 	public String getName() {
 		return name;
 	}
