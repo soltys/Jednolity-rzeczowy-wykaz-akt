@@ -1,29 +1,19 @@
 package pl.swinoujscie.jrwa.core;
-
-
 public class JRWAEntity2010 extends JRWAEntity {
 	final static private int NUMBER_OF_COLUMNS = 5;
-	private String[] columns = new String [NUMBER_OF_COLUMNS];
-	private String ka_ki;
 	
+	private String ka_ki;
+	public JRWAEntity2010()
+	{
+		this.setColumns(new JRWAColumns(NUMBER_OF_COLUMNS));
+	}
 	public int getNumberOfColumns() {
 		return NUMBER_OF_COLUMNS;
 	}
-	
-	public String[] getColumns() {
-		return columns;
-	}
-	
-
-	public void setColumns(String[] columns) {
-		this.columns = columns;
-	}
-
 
 	public String getKa_ki() {
 		return ka_ki;
 	}
-
 
 	public void setKa_ki(String ka_ki) {
 		this.ka_ki = ka_ki;

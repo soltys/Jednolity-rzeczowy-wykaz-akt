@@ -2,8 +2,10 @@ package pl.swinoujscie.jrwa.core;
 
 public class JRWAEntity2011 extends JRWAEntity {
 	final static private int NUMBER_OF_COLUMNS = 4;
-	public String[] columns = new String [NUMBER_OF_COLUMNS];
-	
+	public JRWAEntity2011()
+	{
+		this.setColumns(new JRWAColumns(NUMBER_OF_COLUMNS));
+	}
 	
 	@Override
 	public String toJSON() {
