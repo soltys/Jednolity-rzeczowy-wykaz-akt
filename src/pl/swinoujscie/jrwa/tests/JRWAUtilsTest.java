@@ -7,18 +7,9 @@ import pl.swinoujscie.jrwa.utils.JRWAUtils;
 
 public class JRWAUtilsTest {
 
-	@Test public void NumberToCollumns()
+	@Test public void TestSomethingInJava()
 	{
-		String stringNumber = "0020";
-		String[] columns = new String[4];
-		String[] expectedColumns = new String [4];
-		expectedColumns[0]="0";
-		expectedColumns[1]="00";
-		expectedColumns[2]="002";
-		expectedColumns[3]="0020";
-			
-		columns = JRWAUtils.numberToColumns(stringNumber);
-		
-		Assert.assertArrayEquals(expectedColumns, columns);		
+		Assert.assertEquals(-1,"00".compareToIgnoreCase("001"));
+		Assert.assertEquals(1,"10".compareToIgnoreCase("101"));
 	}
 }
