@@ -1,5 +1,5 @@
 package pl.swinoujscie.jrwa.core;
-public abstract class Entity implements JRWA {
+public abstract class Entity implements JRWA,Comparable<Entity> {
 	
 	private Columns columns;
 	private String name;
@@ -29,6 +29,12 @@ public abstract class Entity implements JRWA {
 	}
 	public void setComments(String comments) {
 		this.comments = comments;
+	}
+	
+	public int compareTo(Entity o)
+	{
+		return columns.compareTo(o.columns);
+	
 	}
 	public abstract String toJSON();
 	public abstract boolean isJRWAEntityParent(Entity children);
@@ -65,7 +71,7 @@ public abstract class Entity implements JRWA {
 			return columns;
 		}
 		
-		public int getLastNotEmptyColumn()
+		private int getLastNotEmptyColumn()
 		{
 			int index = 0;
 			for(String str: columns)
