@@ -18,8 +18,7 @@ public class Columns implements Comparable<Columns>{
 	public String[] fillAllColumns()
 	{
 		String stringNumber = columns[getLastNotEmptyColumn()];		
-		int numberColumns = stringNumber.length();
-		String[] columns = new String[numberColumns];
+		int numberColumns = stringNumber.length();		
 		String helper = "";
 		
 		for(int i=0; i<numberColumns;i++)
@@ -35,8 +34,10 @@ public class Columns implements Comparable<Columns>{
 		int index = 0;
 		for(String str: columns)
 		{
-			if(str.equalsIgnoreCase("") || str == null)
+			if(!str.trim().equals(""))
+			{
 				return index;
+			}
 			index++;
 		}
 		return index;
