@@ -1,5 +1,7 @@
 package pl.swinoujscie.jrwa.core;
 
+import pl.swinoujscie.jrwa.core.Entity.Columns;
+
 public class Parser2011 extends Parser {
 
 	@Override
@@ -7,8 +9,8 @@ public class Parser2011 extends Parser {
 		String[] data = stringToParse.split(";");
 		Entity2011 jrwaEntity2011 = new Entity2011();
 		int numberColumns = jrwaEntity2011.getNumberOfColumns();
-		Columns jrwaColumns = getJRWAColumns(data, numberColumns);
-		jrwaEntity2011.setColumns(jrwaColumns);
+		jrwaEntity2011.setColumns(getJRWAColumns(jrwaEntity2011,data, numberColumns));	
+
 		switch (data.length) {
 		case 7:
 			jrwaEntity2011.setComments(data[6]);		
@@ -21,8 +23,8 @@ public class Parser2011 extends Parser {
 		return jrwaEntity2011;
 	}
 
-	private Columns getJRWAColumns(String[] data, int numberColumns) {
-		Columns jrwaColumns = new Columns(numberColumns);
+	private Columns getJRWAColumns(Entity entity,String[] data, int numberColumns) {
+		Entity.Columns jrwaColumns = entity.new Columns(numberColumns);
 		String[] columns = new String[numberColumns];	
 		columns[0] = data[0];
 		columns[1] = data[1];

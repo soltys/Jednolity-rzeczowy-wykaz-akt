@@ -22,7 +22,7 @@ public class Parser2010Test {
 		String line = "0;00;002;0020;;Wybory do Sejmu i Senatu RP;B-5;Bc;Postępowanie z dokumentacją wyborczą regulują  odrębne przepisy";
 		Parser2010 jrwaParser2010 = new Parser2010();
 		Entity2010 entity2010 = (Entity2010) jrwaParser2010.parse(line);
-		String[] columns = entity2010.getColumns().getColumns();				
+		String[] columns = entity2010.getColumns();			
 		Assert.assertEquals("0", columns[0]);
 		Assert.assertEquals("00", columns[1]);
 		Assert.assertEquals("002", columns[2]);

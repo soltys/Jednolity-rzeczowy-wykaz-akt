@@ -8,8 +8,8 @@ public class Parser2010 extends Parser {
 		String[] data = stringToParse.split(";");
 		Entity2010 jrwaEntity2010 = new Entity2010();
 		int numberColumns = jrwaEntity2010.getNumberOfColumns();		
-		Columns columns = getJRWAColumns(data, numberColumns);		
-		jrwaEntity2010.setColumns(columns);
+		jrwaEntity2010.setColumns(getJRWAColumns(jrwaEntity2010,data, numberColumns));	
+
 		switch (data.length) {
 		case 9:
 			jrwaEntity2010.setComments(data[8]);
@@ -24,9 +24,9 @@ public class Parser2010 extends Parser {
 		return jrwaEntity2010;		
 	}
 
-	private Columns getJRWAColumns(String[] data, int numberColumns)
+	private Entity.Columns getJRWAColumns(Entity entity,String[] data, int numberColumns)
 	{
-		Columns jrwaColumns = new Columns(numberColumns);
+		Entity.Columns jrwaColumns = entity.new Columns(numberColumns);
 		String[] columns = new String[numberColumns];
 		columns[0] = data[0];
 		columns[1] = data[1];
