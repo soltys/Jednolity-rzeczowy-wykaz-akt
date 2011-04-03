@@ -3,19 +3,43 @@ package pl.swinoujscie.jrwa.tests;
 import org.junit.Assert;
 import org.junit.Test;
 
-import pl.swinoujscie.jrwa.core.Entity2011;
-import pl.swinoujscie.jrwa.core.Parser2011;
+import pl.swinoujscie.jrwa.core.Columns;
 
 public class ColumnsTest {
-	@Test public void columnTest()
+	@Test public void getLastNotEmptyColumnTest()
 	{
-		Parser2011 jrwaParser2011 = new Parser2011();
-		Entity2011 jrwaEntity = (Entity2011) jrwaParser2011.parse(";;;0003;Wnioski i interpelacje radnych;A;w tym rejestr i odpowiedzi");
+		final int NUMBER_COLUMN = 5;
+		Columns column = new Columns(NUMBER_COLUMN);
+		String[] columnData = new String[NUMBER_COLUMN];
+		columnData[0] = "";
+		columnData[1] = "";
+		columnData[2] = "";
+		columnData[3] = "0024";
+		column.setColumns(columnData);
 		
-		String[] columns = jrwaEntity.getColumns().getColumns();		
-		Assert.assertEquals("", columns[0]);
-		Assert.assertEquals("", columns[1]);
-		Assert.assertEquals("", columns[2]);
-		Assert.assertEquals("0003", columns[3]);
+		Assert.assertEquals(3, column.getLastNotEmptyColumn());		
+	}
+	
+	@Test public void fillAllColumns()
+	{
+		final int NUMBER_COLUMN = 5;
+		Columns column = new Columns(NUMBER_COLUMN);
+		String[] columnData = new String[NUMBER_COLUMN];
+		columnData[0] = "";
+		columnData[1] = "";
+		columnData[2] = "";
+		columnData[3] = "0024";
+		column.setColumns(columnData);
+		column.fillAllColumns();
+		columnData = column.getColumns();
+		
+		Assert.assertEquals("0",columnData[0]);
+		Assert.assertEquals("00",columnData[1]);
+		Assert.assertEquals("002",columnData[2]);
+		Assert.assertEquals("0024",columnData[3]);		
+	}
+	@Test public void compareTest()
+	{
+		
 	}
 }
