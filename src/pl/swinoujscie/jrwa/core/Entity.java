@@ -76,9 +76,9 @@ public abstract class Entity implements JRWA,Comparable<Entity> {
 			int index = 0;
 			for(String str: columns)
 			{
-				if(!str.trim().equals(""))
+				if(str.equals(""))
 				{
-					return index;
+					return index-1;
 				}
 				index++;
 			}
@@ -106,6 +106,7 @@ public abstract class Entity implements JRWA,Comparable<Entity> {
 				return 1;
 			else if(lhsDataLength > rhsDataLength)
 				return -1;
+			
 			return 0;
 		}
 	}
